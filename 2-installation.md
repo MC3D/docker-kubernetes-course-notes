@@ -14,4 +14,4 @@
 12. Check that Docker is working: `$ docker`
 13. Log in to Docker: `$ docker login`
 
-Once you see Login Succeeded, the setup is complete!
+Once you see `Login Succeeded`, the setup is complete!

@@ -110,4 +110,18 @@ Here's how the docker exec command works with the `-it` options:
 4. Docker starts a new process inside the running container, executing the specified command.
 5. The output of the command is displayed in the terminal or command prompt from where you executed the docker exec command.
 
-_In the context of the docker exec -it command, the -t and -i options together allocate a pseudo-TTY (terminal) and establish an interactive session with the container, providing a way for users to enter commands and receive output interactively._
+The `-i` and `-t` options in the `docker exec -it command` serve different purposes:
+
+- `-i` (or `--interactive`): This option allows for an interactive connection with the container. It keeps the standard input (stdin) open, allowing you to provide input to the running command. Without the `-i` option, the command may not be able to receive interactive input. (allows for input)
+- `-t` (or `--tty`): This option allocates a pseudo-TTY (terminal) for the command executed inside the container. It enables a terminal-like interface, formatting the output in a way that resembles an interactive shell session. The `-t` option is necessary to correctly display the output and make the command interaction more user-friendly. (input and output is formatted nicely)
+
+## `$ docker exec -it <container id> sh`
+
+The `docker exec -it <container id> sh` command is used to start an interactive session inside a running Docker container, specifically using the `/bin/sh` shell as the command interpreter. It allows you to enter commands and interact with the container's environment as if you were inside it.
+
+Here's a breakdown of the command:
+
+1. `docker exec`: This is the Docker command for executing a command within a running container.
+2. `-it`: These options together allocate a pseudo-TTY (terminal) and establish an interactive session with the container. It enables the interactive input and output capabilities needed for an interactive session.
+3. `<container id>`: This represents the ID or name of the running container in which you want to start the interactive session.
+4. `sh`: It specifies the command to be executed inside the container. In this case, `sh` refers to the `/bin/sh` shell. You can replace `sh` with other available shells like `bash`, or `zsh` depending on the specific shell available in the container.

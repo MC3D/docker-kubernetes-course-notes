@@ -43,7 +43,7 @@ These steps guide you through the process of creating a Docker image. The `Docke
 
 User Docker ID / Project (Repo) Name / Version
 
-# Q & A
+## Q & A
 
 Q: What is a base image?
 A: A base image serves as the foundation or starting point for creating custom Docker images. It provides the necessary operating system and dependencies to run your application.

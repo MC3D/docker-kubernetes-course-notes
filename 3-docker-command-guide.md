@@ -128,22 +128,32 @@ Note: It's important to note that this command performs a potentially destructiv
 
 ## go-to reference
 
-- You can use the `-p` or `--publish` flag in Docker to publish (expose) container ports and bind them to specific host ports. It enables network communication between the running container and the host or other containers.
-
-Here's an example command using the -p flag:
-
 ```
-docker run -p 8080:80 simpleweb
+$ docker run -p 8080:80 simpleweb
 ```
 
-- When you include a `[command]` at the end of the `docker run <image name>` command, it overrides (replaces) the default command specified in the Docker image and executes the provided command instead.
-
-- The `-a` or `--attach` option is used to attach the container's output to the current terminal.
+You can use the `-p` or `--publish` flag in Docker to publish (expose) container ports and bind them to specific host ports. It enables network communication between the running container and the host or other containers.
 
 ```
-docker start -a <container id>
+$ docker run <image name> [command]
 ```
 
-- The `docker exec -it <container id> <command>` command is used to execute a command within a running Docker container. It allows you to interact with the container's environment and run commands as if you were inside the container itself.
+When you include a `[command]` at the end of the `docker run <image name>` command, it overrides (replaces) the default command specified in the Docker image and executes the provided command instead.
 
-- The `docker exec -it <container id> sh` command is used to start an interactive session inside a running Docker container, specifically using the `/bin/sh` shell as the command interpreter. It allows you to enter commands and interact with the container's environment as if you were inside it.
+```
+$ docker start -a <container id>
+```
+
+The `-a` or `--attach` option is used to attach the container's output to the current terminal.
+
+```
+$ docker exec -it <container id> <command>
+```
+
+The `docker exec -it <container id> <command>` command is used to execute a command within a running Docker container. It allows you to interact with the container's environment and run commands as if you were inside the container itself.
+
+```
+$ docker exec -it <container id> sh
+```
+
+The `docker exec -it <container id> sh` command is used to start an interactive session inside a running Docker container, specifically using the `/bin/sh` shell as the command interpreter. It allows you to enter commands and interact with the container's environment as if you were inside it.

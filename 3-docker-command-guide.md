@@ -14,7 +14,6 @@ This README file provides an overview of common Docker commands that are used to
 - [docker stop](#docker-stop)
 - [docker kill](#docker-kill)
 - [docker system prune](#docker-system-prune)
-- [go-to reference](#go-to-reference)
 
 ## docker build
 
@@ -42,11 +41,19 @@ This command prepares the container and returns the Container ID of the newly cr
 
 The `docker start` command is used to start a stopped Docker container.
 
+To start a specific container, identified by its Container ID or container name, use the following syntax:
+
 ```
 $ docker start <container id>
 ```
 
-This command starts the specified container, identified by its Container ID or container name.
+An example of a common use case for the `docker start` command is as follows:
+
+```
+$ docker start -a <container id>
+```
+
+The `-a` or `--attach` option is used to attach the container's output to the current terminal.
 
 ## docker run
 
@@ -60,6 +67,20 @@ $ docker run <image name>
 
 This command checks if the specified image exists locally and creates a new container based on it. It also allocates necessary resources and starts the container.
 
+Here are some common use cases for the `docker run` command:
+
+```
+$ docker run -p 8080:80 simpleweb
+```
+
+You can use the `-p` or `--publish` flag in Docker to publish (expose) container ports and bind them to specific host ports. It enables network communication between the running container and the host or other containers.
+
+```
+$ docker run <image name> [command]
+```
+
+When you include a `[command]` at the end of the `docker run <image name>` command, it overrides (replaces) the default command specified in the Docker image and executes the provided command instead.
+
 ## docker exec
 
 The `docker exec` command is used to execute a command within a running Docker container.
@@ -69,6 +90,20 @@ $ docker exec <container id> <command>
 ```
 
 This command allows you to interact with the container's environment and run commands as if you were inside the container itself.
+
+Here are some common use cases for the `docker exec` command:
+
+```
+$ docker exec -it <container id> <command>
+```
+
+The `docker exec -it <container id> <command>` command is used to execute a command within a running Docker container. It allows you to interact with the container's environment and run commands as if you were inside the container itself.
+
+```
+$ docker exec -it <container id> sh
+```
+
+The `docker exec -it <container id> sh` command is used to start an interactive session inside a running Docker container, specifically using the `/bin/sh` shell as the command interpreter. It allows you to enter commands and interact with the container's environment as if you were inside it.
 
 ## docker ps
 
@@ -125,35 +160,3 @@ $ docker system prune
 This command removes stopped containers, unused images, unused networks, and unused volumes to reclaim disk space.
 
 Note: It's important to note that this command performs a potentially destructive operation, as it permanently deletes unused resources. Therefore, it's recommended to use it with caution and make sure you have a backup of any important data before running it.
-
-## go-to reference
-
-```
-$ docker run -p 8080:80 simpleweb
-```
-
-You can use the `-p` or `--publish` flag in Docker to publish (expose) container ports and bind them to specific host ports. It enables network communication between the running container and the host or other containers.
-
-```
-$ docker run <image name> [command]
-```
-
-When you include a `[command]` at the end of the `docker run <image name>` command, it overrides (replaces) the default command specified in the Docker image and executes the provided command instead.
-
-```
-$ docker start -a <container id>
-```
-
-The `-a` or `--attach` option is used to attach the container's output to the current terminal.
-
-```
-$ docker exec -it <container id> <command>
-```
-
-The `docker exec -it <container id> <command>` command is used to execute a command within a running Docker container. It allows you to interact with the container's environment and run commands as if you were inside the container itself.
-
-```
-$ docker exec -it <container id> sh
-```
-
-The `docker exec -it <container id> sh` command is used to start an interactive session inside a running Docker container, specifically using the `/bin/sh` shell as the command interpreter. It allows you to enter commands and interact with the container's environment as if you were inside it.

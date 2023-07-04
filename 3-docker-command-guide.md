@@ -19,13 +19,29 @@ This README file provides an overview of common Docker commands that are used to
 
 The `docker build` command is used to build a Docker image.
 
+To build an image, use the following command syntax:
+
 ```
 $ docker build <build context>
 ```
 
 The `<build context>` refers to the directory path that contains the files and directories needed for building the image.
 
-When you run `docker build .`, the `.` (dot) represents the current directory as the build context. It means that all the files and directories in the current directory, including subdirectories, will be sent to the Docker daemon to be processed during the build.
+When you run `docker build .`, the `.` (dot) represents the current directory as the build context. This means that all the files and directories in the current directory, including subdirectories, will be sent to the Docker daemon to be processed during the build.
+
+Additionally, you can tag your image with a specific name and version using the `-t` option:
+
+```
+$ docker build -t <Docker username or organization name>/<name of your project or repository>:<desired version tag> .
+```
+
+Here is an example:
+
+```
+$ docker build -t mc3d/redis:latest .
+```
+
+This command builds an image and tags it as mc3d/redis with the version tag latest.
 
 ## docker create
 
